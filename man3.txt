@@ -1,0 +1,52 @@
+BR-SRV
+mount /dev/sr0 /mnt/
+1. ./import.sh /mnt/Users.csv
+HQ-SRV
+2. gost-hqs.sh
+ISP
+vim /etc/openssh/sshd_config
+PermitRootLogin yes
+HQ-SRV
+3. import-gost.sh
+scp ca.cer user@192.168.200.X:~/
+ISP
+4. gost-isp.sh
+HQ-CLI
+cp /home/user/ca.cer /etc/pki/ca-trust/source/anchors/ && update-ca-trust
+#Скачать cryptoproCSP и извлечь
+cd /home/user/Загрузки/linux-amd64
+apt-get install -y cryptopro-preinstall
+./install_gui.sh
+vim /etc/hosts
+192.168.100.2 hq-srv.au-team.irpo
+192.168.100.2 mon.au-team.irpo
+BR-SRV
+5. fix-docker.sh
+HQ-RTR
+6. ipsec-hq.sh
+BR-RTR
+7. ipsec-br.sh
+HQ-SRV
+8. print.sh
+HQ-RTR
+0.frsys-hqr.sh
+0.rsyslog-hqr.sh
+BR-RTR
+0.frsys-brr.sh
+0.rsyslog-brr.sh
+BR-SRV
+0.rsyslog-brs.sh
+HQ-SRV
+0.rsyslog-hqs.sh
+HQ-SRV
+0.zabbix-hqs.sh
+BR-SRV
+0.zabbix-brs.sh
+HQ-CLI
+http;//mon.au-team.irpo/zabbix/setup.php
+BR-SRV
+0.ansible2.sh
+HQ-SRV
+0.fail2ban.sh
+HQ-CLI
+CyberBackup web conf

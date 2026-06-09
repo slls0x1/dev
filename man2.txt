@@ -1,0 +1,15 @@
+0.1 SSH in ALL VM conf
+
+1.BR-SRV - samba.sh
+2.HQ-SRV - raid.sh
+3.HQ-SRV - nfs-hqs.sh
+4.HQ-CLI - nfs-hqc.sh
+5.ALL - ntp....sh
+6.BR-SRV - ansible.sh
+7.BR-SRV - docker.sh
+8.HQ-SRV - lamp.sh
+9.HQ-RTR - port-hq.sh
+10.BR-RTR - port-br.sh
+11.ISP - nginx.sh
+12.ISP - apache2.sh
+13.HQ-CLI -yandex-browser-stable
